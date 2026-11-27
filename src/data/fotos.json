@@ -1,0 +1,192 @@
+{
+ "retablo": {
+  "nombre": "retablo",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "cristo": {
+  "nombre": "cristo",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 576
+ },
+ "templo": {
+  "nombre": "templo",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "patio": {
+  "nombre": "patio",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "entrada": {
+  "nombre": "entrada",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "forma": {
+  "nombre": "forma",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "libro": {
+  "nombre": "libro",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "campana": {
+  "nombre": "campana",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "flores": {
+  "nombre": "flores",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "san-cristobal": {
+  "nombre": "san-cristobal",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "comunion": {
+  "nombre": "comunion",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "custodia": {
+  "nombre": "custodia",
+  "anchos": [
+   640,
+   1100,
+   1729
+  ],
+  "w": 1729,
+  "h": 1162
+ },
+ "adoracion": {
+  "nombre": "adoracion",
+  "anchos": [
+   640,
+   1100,
+   1706
+  ],
+  "w": 1706,
+  "h": 2560
+ },
+ "visita": {
+  "nombre": "visita",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "jovenes": {
+  "nombre": "jovenes",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "montana": {
+  "nombre": "montana",
+  "anchos": [
+   640,
+   1100,
+   1600
+  ],
+  "w": 1600,
+  "h": 1200
+ },
+ "columbarios": {
+  "nombre": "columbarios",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ },
+ "sacerdotes": {
+  "nombre": "sacerdotes",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1800
+ },
+ "mision": {
+  "nombre": "mision",
+  "anchos": [
+   640,
+   1100,
+   1800
+  ],
+  "w": 1800,
+  "h": 1200
+ }
+}
