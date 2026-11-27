@@ -78,7 +78,7 @@ def pagina(ruta, titulo, desc, cuerpo, activa="", extra_head="", portada=False):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(titulo_full)}</title>
 <meta name="description" content="{e(desc)}">
-<meta name="theme-color" content="#173a43">
+<meta name="theme-color" content="#172a54">
 <meta property="og:type" content="website"><meta property="og:locale" content="es_ES">
 <meta property="og:title" content="{e(titulo_full)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:image" content="{r}assets/img/og.jpg">
