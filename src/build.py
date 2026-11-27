@@ -329,31 +329,64 @@ def sacramentos():
            "Bautismo, comunión, confirmación, confesión, matrimonio, comunión a enfermos y columbarios en la parroquia Santo Cristo de la Misericordia.", cuerpo, "sacramentos")
 
 
+FOTOS_GRUPOS = json.loads((SRC / "data" / "fotos_grupos.json").read_text(encoding="utf-8"))
+# Foto de portada, texto alternativo y logo oficial (si lo tiene) de cada grupo
+CARA_GRUPO = {
+    "iniciacion": ("comunion", "Niños el día de su primera comunión", None),
+    "lifeteen": ("g-jmj", "Miles de jóvenes con banderas en un encuentro al aire libre", "lifeteen"),
+    "lazaro": ("g-talita", "Pintura de Jesús caminando de la mano de un niño", None),
+    "lightup": ("g-lightup", "Una bombilla encendida en la penumbra", None),
+    "bartimeo": ("g-oracion", "Manos juntas en oración sobre una Biblia abierta", "bartimeo"),
+    "effeta": ("g-manos", "Jóvenes en círculo unen sus manos en el centro", "effeta"),
+    "nicodemo": ("g-cristo", "El crucifijo de la parroquia sobre el altar", None),
+    "emaus-m": ("montana", "Camino de montaña al atardecer", "emaus"),
+    "emaus-h": ("mision", "Grupo en camino durante una misión", "emaus"),
+    "accion-catolica": ("g-accion", "Miembros de la parroquia reunidos con los sacerdotes", "accion-catolica"),
+    "amor-conyugal": ("templo", "Interior del templo parroquial", "pac"),
+    "novios": ("flores", "Flores ante el altar", None),
+    "tortugas": ("custodia", "La custodia con el Santísimo", None),
+    "adoracion": ("g-adoracion", "Un sacerdote arrodillado ante el altar", "adoracion"),
+    "caritas": ("g-caritas", "Escultura de Jesús dormido en un banco como un sin techo", "caritas"),
+}
+INTRO_ETAPA = {
+    "ninos": "Catequesis para crecer en la fe desde pequeños, con sus familias.",
+    "jovenes": "Grupos semanales y retiros hechos por jóvenes para jóvenes.",
+    "adultos": "Matrimonios, retiros, formación, adoración y caridad.",
+}
+
+
 def grupos():
     etapas = [("ninos", "Niños"), ("jovenes", "Jóvenes"), ("adultos", "Adultos y familias")]
     secciones = ""
     for k, nombre in etapas:
         items = ""
-        for g in D.GRUPOS:
-            if g["etapa"] != k:
-                continue
+        lista = [g for g in D.GRUPOS if g["etapa"] == k]
+        for g in lista:
             acciones = ""
-            if g.get("enlace"):
-                acciones += enlace(*g["enlace"], "")
             if g.get("email"):
-                acciones += f'<a class="mas" href="mailto:{g["email"]}">Escribir<span class="solo"> a {e(g["nombre"])}</span>{ico("flecha")}</a>'
+                acciones += f'<a class="btn btn-rojo btn-peq" href="mailto:{g["email"]}">Escribir<span class="solo"> a {e(g["nombre"])}</span></a>'
+            if g.get("enlace"):
+                acciones += enlace(*g["enlace"], "", clase="btn btn-linea oscuro btn-peq")
             if not acciones:
-                acciones = f'<a class="mas" href="contacto.html">Preguntar en secretaría<span class="solo"> por {e(g["nombre"])}</span>{ico("flecha")}</a>'
+                acciones = f'<a class="btn btn-linea oscuro btn-peq" href="contacto.html">Preguntar en secretaría<span class="solo"> por {e(g["nombre"])}</span></a>'
             fechas = [f'{fecha(i, False)} {i[:4]}' for i, f, _, gid in D.AGENDA if gid == g["id"] and f >= HOY][:2]
-            prox = f'<p class="prox">Próximo: {" · ".join(fechas)}</p>' if fechas else ""
-            cuando = f'<p class="cuando">{ico("reloj")}{e(g["cuando"])}</p>' if g.get("cuando") else ""
-            items += f'<li class="grupo" id="{g["id"]}"><h3>{e(g["nombre"])}</h3><p>{e(g["texto"])}</p>{cuando}{prox}<p class="acciones">{acciones}</p></li>'
-        secciones += f'<section class="etapa" id="{k}" data-etapa="{k}"><h2>{nombre}</h2><ul class="grupos">{items}</ul></section>'
-    botones = '<button type="button" aria-pressed="true" data-f="todos">Todos</button>' + \
-        "".join(f'<button type="button" aria-pressed="false" data-f="{k}">{n}</button>' for k, n in etapas)
+            prox = f'<p class="g-prox">Próximo: {" · ".join(fechas)}</p>' if fechas else ""
+            cuando = f'<p class="g-cuando">{ico("reloj")}<span>{e(g["cuando"])}</span></p>' if g.get("cuando") else ""
+            foto, alt, logo = CARA_GRUPO.get(g["id"], ("templo", "Interior del templo", None))
+            ref = FOTOS_GRUPOS.get(foto, foto)
+            sello = f'<span class="g-sello"><img src="assets/img/logos/{logo}.svg" alt="" width="56" height="56"></span>' if logo else ""
+            items += (f'<li class="g-card" id="{g["id"]}"><div class="g-foto">{img(ref, alt, "", "(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw")}'
+                      f'<span class="g-etapa">{nombre}</span></div>{sello}'
+                      f'<div class="g-cuerpo"><h3>{e(g["nombre"])}</h3><p class="g-texto">{e(g["texto"])}</p>{cuando}{prox}'
+                      f'<p class="g-acciones">{acciones}</p></div></li>')
+        secciones += (f'<section class="etapa" id="{k}" data-etapa="{k}"><div class="etapa-cab"><h2>{nombre}</h2>'
+                      f'<p>{INTRO_ETAPA[k]} <span class="etapa-n">{len(lista)} {"grupo" if len(lista) == 1 else "grupos"}</span></p></div>'
+                      f'<ul class="g-rejilla">{items}</ul></section>')
+    botones = '<button type="button" aria-pressed="true" data-f="todos">Todos</button>' +         "".join(f'<button type="button" aria-pressed="false" data-f="{k}">{n}</button>' for k, n in etapas)
     cuerpo = cabecera("Grupos", "De los más pequeños a los matrimonios: encuentra tu sitio y escribe a quien lo coordina.", "jovenes", alt="Jóvenes cantando durante un encuentro") + f"""
 <div class="seccion"><div class="ancho"><div class="filtros" role="group" aria-label="Filtrar por edad">{botones}</div>{secciones}
-<p>{enlace("Ver el vídeo de la comunidad parroquial", "https://youtu.be/nCb8TmvUHMg", "")}</p></div></div>
+<div class="g-video"><div><h2>La comunidad parroquial</h2><p>Mira en dos minutos cómo vivimos la fe en Boadilla.</p></div>
+{enlace("Ver el vídeo", "https://youtu.be/nCb8TmvUHMg", "", clase="btn btn-claro")}</div></div></div>
 <section class="seccion noche"><div class="ancho dos"><div class="intro"><h2>Próximas fechas</h2><p>Añádelas a tu calendario.</p></div>{agenda(20)}</div></section>"""
     pagina("grupos.html", "Grupos y catequesis", "Catequesis, LifeTeen, Light Up, Emaús, Effetá, Bartimeo, Acción Católica, matrimonios y Cáritas en Boadilla del Monte.", cuerpo, "grupos")
 

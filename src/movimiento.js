@@ -31,7 +31,7 @@
   if (h1) gsap.from(h1, { y: 26, autoAlpha: 0, duration: 1, ease: curva });
 
   // Aparición al hacer scroll, en grupos escalonados
-  const sel = '.sec-cab, .intro > *, .quiero li, .dia, .aviso, .tres > div, .intro-foto, .misas + *, .pie .ancho:not(.pie-legal) > *, main section .ancho > h2, main section .ancho > p';
+  const sel = '.g-card, .etapa-cab, .g-video, .sec-cab, .intro > *, .quiero li, .dia, .aviso, .tres > div, .intro-foto, .misas + *, .pie .ancho:not(.pie-legal) > *, main section .ancho > h2, main section .ancho > p';
   const items = gsap.utils.toArray(sel).filter(el => !el.closest('.heroe'));
   gsap.set(items, { autoAlpha: 0, y: 40 });
   let ultimo = 0, enGrupo = 0;

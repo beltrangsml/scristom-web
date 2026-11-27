@@ -1,0 +1,83 @@
+{
+ "g-jmj": {
+  "nombre": "g-jmj",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-manos": {
+  "nombre": "g-manos",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-oracion": {
+  "nombre": "g-oracion",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-lightup": {
+  "nombre": "g-lightup",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-talita": {
+  "nombre": "g-talita",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-cristo": {
+  "nombre": "g-cristo",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-accion": {
+  "nombre": "g-accion",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-adoracion": {
+  "nombre": "g-adoracion",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ },
+ "g-caritas": {
+  "nombre": "g-caritas",
+  "anchos": [
+   480,
+   900
+  ],
+  "w": 1200,
+  "h": 900
+ }
+}
