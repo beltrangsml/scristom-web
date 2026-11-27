@@ -67,8 +67,12 @@ def jsonld():
 
 def pagina(ruta, titulo, desc, cuerpo, activa="", extra_head="", portada=False):
     r = "../" * ruta.count("/")
+    base_404 = ""
     if ruta == "404.html":
         r = ""
+        # En GitHub Pages la 404 se sirve desde cualquier ruta: fija la raíz del proyecto.
+        base_404 = ("<script>if(location.hostname.endsWith('.github.io')){const b=document.createElement('base');"
+                    "b.href='/'+location.pathname.split('/')[1]+'/';document.head.append(b)}</script>")
     nav = "".join(f'<li><a href="{r}{k}.html"{" aria-current=page" if k == activa else ""}>{t}</a></li>' for k, t in NAV)
     titulo_full = titulo if portada else f"{titulo} · Santo Cristo de la Misericordia"
     doc = f"""<!doctype html>
@@ -79,6 +83,7 @@ def pagina(ruta, titulo, desc, cuerpo, activa="", extra_head="", portada=False):
 <title>{e(titulo_full)}</title>
 <meta name="description" content="{e(desc)}">
 <meta name="theme-color" content="#172a54">
+<meta name="robots" content="noindex">{base_404}
 <meta property="og:type" content="website"><meta property="og:locale" content="es_ES">
 <meta property="og:title" content="{e(titulo_full)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:image" content="{r}assets/img/og.jpg">
