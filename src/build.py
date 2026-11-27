@@ -130,7 +130,10 @@ def pagina(ruta, titulo, desc, cuerpo, activa="", extra_head="", portada=False):
   <a href="{r}horarios.html">{ico("reloj")}Misas</a><a href="tel:{P["tel"]}">{ico("tel")}Llamar</a>
   <a href="{P["mapa"]}" rel="noopener" target="_blank">{ico("mapa")}Llegar</a><a href="{r}colabora.html">{ico("corazon")}Donar</a>
 </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="{r}assets/app.js" defer></script>
+<script src="{r}assets/movimiento.js" defer></script>
 </body>
 </html>
 """
@@ -489,6 +492,7 @@ def legales():
 if __name__ == "__main__":
     (OUT / "assets" / "estilos.css").write_text((SRC / "fuentes.css").read_text(encoding="utf-8") + "\n" + (SRC / "estilos.css").read_text(encoding="utf-8"), encoding="utf-8")
     (OUT / "assets" / "app.js").write_text((SRC / "app.js").read_text(encoding="utf-8"), encoding="utf-8")
+    (OUT / "assets" / "movimiento.js").write_text((SRC / "movimiento.js").read_text(encoding="utf-8"), encoding="utf-8")
     for f in (inicio, horarios, sacramentos, grupos, avisos, parroquia, colabora, caritas, campamentos, contacto, legales):
         f()
     (OUT / ".nojekyll").write_text("")
